@@ -10,4 +10,7 @@ This project uses the Iris dataset to train a neural network for classifying Iri
 - `Dockerfile`: File to define the Docker container for running the training script.
 - `Makefile`: File to define the build process and manage dependencies.
 - `requirements.txt`: File listing the Python packages required for the project.
-- `train.py`: Python script for loading the dataset, defining the neural network, and training the model.
+- `data_loader.py`: Python script for loading the dataset.
+- `model.py`: Python script for defining the neural network. 
+- `train.py`: Python script for training the model.
+- `test.py`: Python script for testing the model.
