@@ -3,12 +3,18 @@ import torch.nn as nn
 from model import IrisClassifier
 from train import test_loader
 
-
 model = IrisClassifier()
 model.load_state_dict(torch.load("models/iris_classifier.pt"))
 model.eval()
 
 def test_model(model, test_loader):
+    """
+    Evaluates the trained IrisClassifier model on the test data and computes the accuracy.
+
+    Args:
+    - model (IrisClassifier): Trained model to be evaluated.
+    - test_loader (DataLoader): DataLoader object containing the test data.
+    """
     correct = 0
     total = 0
     with torch.no_grad():

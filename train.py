@@ -12,6 +12,12 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 num_epochs = 100
 for epoch in range(num_epochs):
+    """
+    Training loop for the IrisClassifier model.
+
+    Args:
+    - epoch (int): Current epoch number.
+    """
     for inputs, targets in train_loader:
         optimizer.zero_grad()
         outputs = model(inputs)
