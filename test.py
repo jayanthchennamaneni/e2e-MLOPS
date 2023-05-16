@@ -25,6 +25,7 @@ def test_model(model, test_loader):
             correct += (predicted == labels).sum().item()
 
     accuracy = 100 * correct / total
-    print(f"Accuracy: {accuracy:.2f}%")
+    # print(f"Accuracy: {accuracy:.2f}%")
+    return accuracy
 
-test_model(model, test_loader)
+accuracy = test_model(model, test_loader)

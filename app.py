@@ -2,19 +2,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import torch
 from model import IrisClassifier
+from test import accuracy
 
 app = FastAPI()
 
 class IrisData(BaseModel):
-    """
-    Represents the input data for Iris flower prediction.
-
-    Attributes:
-    - sepal_length (float): Length of the sepal.
-    - sepal_width (float): Width of the sepal.
-    - petal_length (float): Length of the petal.
-    - petal_width (float): Width of the petal.
-    """
     sepal_length: float
     sepal_width: float
     petal_length: float
@@ -23,17 +15,18 @@ class IrisData(BaseModel):
 model = IrisClassifier()
 model.load_state_dict(torch.load("models/iris_classifier.pt"))
 
-@app.post("/predict")
-async def predict(iris_data: IrisData):
+@app.get("/")
+async def root():
     """
-    Endpoint for predicting the class of an Iris flower based on the provided data.
-
-    Args:
-    - iris_data (IrisData): Input data containing sepal and petal measurements.
+    Root endpoint that returns a welcome message.
 
     Returns:
-    - dict: A dictionary containing the predicted class of the Iris flower.
+    - dict: A dictionary containing a welcome message.
     """
+    return {"message": "Welcome to the Iris Classifier API!"}
+
+@app.post("/predict")
+async def predict(iris_data: IrisData):
     data = torch.tensor([[
         iris_data.sepal_length,
         iris_data.sepal_width,
@@ -49,3 +42,13 @@ async def predict(iris_data: IrisData):
         _, predicted = torch.max(outputs.data, 1)
         predicted_class = class_names[int(predicted)]
         return {"class": predicted_class}
+    
+@app.get("/metrics")
+async def metrics():
+    """
+    Endpoint that returns the model's performance metrics.
+
+    Returns:
+    - dict: A dictionary containing the model's performance metrics.
+    """
+    return {"accuracy": accuracy}
