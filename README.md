@@ -4,18 +4,16 @@ This repository contains an end-to-end Machine Learning Operations (MLOps) proje
 
 ## Project Overview
 
-The main objective of this project is to develop a machine learning model for the classification of iris flowers based on their features, such as sepal length, sepal width, petal length, and petal width. The project also focuses on implementing a complete MLOps pipeline, including model training, testing, serving, and containerization. The project is organized into the following structure:
+The main objective of this project is to implemnt a complete MLOps pipeline, including model training, testing, serving, and containerization. The project is organized into the following structure:
 
-.
-├── models                # Directory for saved model files
-├── .dockerignore         # Docker ignore file
-├── .gitignore            # Git ignore file
-├── dataloader.py         # Data loading and dataloaders using PyTorch
-├── model.py              # Neural network model definition
-├── train.py              # Model training script
-├── test.py               # Model testing script
-├── app.py                # FastAPI endpoints definition
-├── requirements.txt      # Project dependencies
-├── Makefile              # defining the build process
-└── Dockerfile            # Dockerfile for containerization
+- `models/`: Directory for storing trained model files.
+- `Dockerfile`: File to define the Docker container for running the training script.
+- `Makefile`: File to define the build process and manage dependencies.
+- `requirements.txt`: File listing the Python packages required for the project.
+- `data_loader.py`: Python script for loading the dataset.
+- `model.py`: Python script for defining the neural network. 
+- `train.py`: Python script for training the model.
+- `test.py`: Python script for testing the model.
+- `app.py`: FastAPI endpoints definition
+
 
