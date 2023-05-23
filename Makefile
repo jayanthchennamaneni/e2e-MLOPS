@@ -1,5 +1,3 @@
-.PHONY: train test build-docker
-
 train:
 	# Run the training script
 	python train.py
@@ -12,3 +10,4 @@ build-docker:
 	# Build a Docker image with the tag "toast"
 	docker build -t toast .
 
+all: train test build-docker
