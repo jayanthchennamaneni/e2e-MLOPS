@@ -21,9 +21,7 @@ The repository's structure is as follows:
 ├── train.py            # Script to train the model
 ├── test.py             # Script to test the model
 └── app.py              # FastAPI application with endpoints to interact with the model
-```
-
-
+````
 ## Getting Started
 
 To get the project up and running:
@@ -38,9 +36,7 @@ Once you have built the Docker image, you can start the FastAPI application:
 
 ```
 docker run -p 8000:8000 <docker-image-name>:<tag>
-```
-
-
+````
 Then, access the API at http://localhost:8000.
 
 ## Additional Resources
